@@ -1,0 +1,23 @@
+{
+  "name": "aphid",
+  "version": "1.0.0",
+  "description": "服务端渲染探索",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zsedc800/aphid.git"
+  },
+  "author": "joe.zhou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zsedc800/aphid/issues"
+  },
+  "homepage": "https://github.com/zsedc800/aphid#readme",
+  "devDependencies": {
+    "lerna": "^3.13.4",
+    "typescript": "^3.4.5"
+  }
+}

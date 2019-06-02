@@ -1,0 +1,26 @@
+{
+  "name": "aphid-server",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "joe.zhou <zsedc880@gmail.com>",
+  "homepage": "https://github.com/zsedc800/aphid/tree/master/packages/aphid-server#readme",
+  "license": "ISC",
+  "main": "lib/aphid-server.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zsedc800/aphid.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/zsedc800/aphid/issues"
+  }
+}
