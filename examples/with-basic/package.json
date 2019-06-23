@@ -1,0 +1,12 @@
+{
+  "name": "with-basic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ../../packages/aphid-build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
