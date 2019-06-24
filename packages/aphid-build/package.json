@@ -24,12 +24,15 @@
     "url": "https://github.com/zsedc800/aphid/issues"
   },
   "dependencies": {
+    "koa": "^2.7.0",
     "webpack": "^4.35.0",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
+    "@types/koa": "^2.0.48",
     "@types/webpack": "^4.4.33",
-    "@types/webpack-dev-middleware": "^2.0.2"
+    "@types/webpack-dev-middleware": "^2.0.2",
+    "@types/webpack-hot-middleware": "^2.16.5"
   }
 }
