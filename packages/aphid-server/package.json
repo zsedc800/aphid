@@ -5,13 +5,14 @@
   "author": "joe.zhou <zsedc880@gmail.com>",
   "homepage": "https://github.com/zsedc800/aphid/tree/master/packages/aphid-server#readme",
   "license": "ISC",
-  "main": "lib/aphid-server.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -22,5 +23,12 @@
   },
   "bugs": {
     "url": "https://github.com/zsedc800/aphid/issues"
+  },
+  "dependencies": {
+    "koa": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.48",
+    "aphid-build": "^0.0.0"
   }
 }

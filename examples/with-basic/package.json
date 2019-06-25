@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node ../../packages/aphid-build"
+    "start": "ts-node ./index.js"
   },
   "keywords": [],
   "author": "",
