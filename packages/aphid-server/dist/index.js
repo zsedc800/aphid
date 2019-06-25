@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Server {
-    constructor() { }
+    constructor({}) {
+        this.init();
+    }
+    init() { }
 }
-exports.default = Server;
+exports.Server = Server;
