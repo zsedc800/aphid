@@ -6,10 +6,18 @@ export default {
   dev(app: Koa, context: string) {
     const webpackConfig: Configuration = getDevConfig({
       context,
-      entry: './index',
+      entry: './index.js',
     });
     const compiler: Compiler = webpack(webpackConfig);
-    app.use(koaWebpack(compiler, {}));
+    app.use(
+      koaWebpack(compiler, {
+        path: '__aphid_hmr',
+        heartbeat: 5000,
+        publicPath: '/',
+        log: false,
+        logLevel: 'error',
+      }),
+    );
   },
   web() {},
   node() {},

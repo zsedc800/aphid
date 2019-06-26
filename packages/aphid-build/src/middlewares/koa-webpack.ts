@@ -5,9 +5,26 @@ import { Context } from 'koa';
 import { KeyValueObject } from '../types';
 import { PassThrough } from 'stream';
 
-export default (compiler: Compiler, options: any) => {
-  const devMid: Function = devMiddleware(compiler, options.devMiddleware);
-  const hotMid: Function = hotMiddleware(compiler, options.hotMiddleware);
+interface IDevOpt {
+  logLevel: string;
+  path: string;
+  heartbeat: number;
+  publicPath: string;
+  log: any;
+}
+
+export default (
+  compiler: Compiler,
+  {
+    path = '__aphid_hmr',
+    heartbeat = 5000,
+    publicPath = '/',
+    log = false,
+    logLevel = 'error',
+  }: IDevOpt,
+) => {
+  const devMid: Function = devMiddleware(compiler, { logLevel, publicPath });
+  const hotMid: Function = hotMiddleware(compiler, { log, heartbeat, path });
   return async (ctx: Context, next: Function) => {
     const stream: PassThrough = new PassThrough();
     ctx.body = stream;
@@ -21,17 +38,18 @@ export default (compiler: Compiler, options: any) => {
           ctx.body = content;
         },
       },
-      hotMid(
-        ctx.req,
-        {
-          writeHead: (status: number, header: KeyValueObject) => {
-            ctx.status = status;
-            ctx.set(header);
+      () =>
+        hotMid(
+          ctx.req,
+          {
+            writeHead: (status: number, header: KeyValueObject) => {
+              ctx.status = status;
+              ctx.set(header);
+            },
+            write: stream.write.bind(stream),
           },
-          write: stream.write.bind(stream),
-        },
-        next,
-      ),
+          next,
+        ),
     );
   };
 };

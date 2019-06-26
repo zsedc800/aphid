@@ -17,11 +17,18 @@ class Server {
     this.dir = dir;
     this.port = port;
     this.dev = dev;
+    if (port) {
+      this.prepare().then(() => {
+        this.app.listen(port, () => {
+          console.log(`server start at ${port}`);
+        });
+      });
+    }
   }
   public async prepare() {
     const context = resolve(this.dir);
     if (this.dev) {
-      compiler(this.app, context);
+      compiler.dev(this.app, context);
     }
   }
 }

@@ -2,19 +2,12 @@
   "compilerOptions": {
     "target": "esnext",
     "declaration": true,
-    "module": "es6",
-    "rootDir": "./",
-    "baseUrl": "./",
+    "module": "commonjs",
     "strict": true,
     "moduleResolution": "node",
-    "paths": {
-      "aphid-build": ["packages/aphid-build/src"],
-      "aphid-server": ["packages/aphid-server/src"]
-    },
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["packages/aphid-build/src", "packages/aphid-server/src"],
   "exclude": ["node_modules/", "examples"]
 }

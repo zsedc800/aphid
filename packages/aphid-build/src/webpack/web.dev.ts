@@ -12,10 +12,12 @@ const baseConfig: Configuration = {
       {
         test: /\.tsx?$/,
         use: [require.resolve('ts-loader')],
+        exclude: /node_modules/,
       },
       {
         test: /\.jsx?$/,
         use: [require.resolve('babel-loader')],
+        exclude: /node_modules/,
       },
     ],
   },
@@ -25,6 +27,7 @@ const baseConfig: Configuration = {
         NODE_ENV: process.env.NODE_ENV,
       },
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 };
 
@@ -33,7 +36,8 @@ export default ({ context, entry }: Iopt) => {
     context,
     entry: {
       app: [
-        'webpack-hot-middleware/client?name=aphid&path=/aphid_hmr&timeout=2000',
+        // require.resolve('webpack-hot-middleware/client') +
+        //   '?name=aphid&path=/__aphid_hmr&timeout=2000',
         join(context, entry),
       ],
     },
