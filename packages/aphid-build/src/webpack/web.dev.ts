@@ -7,16 +7,20 @@ interface Iopt {
 
 const baseConfig: Configuration = {
   mode: 'development',
+  resolveLoader: {
+    modules: ['node_modules', join(__dirname, 'loaders')],
+  },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [require.resolve('ts-loader')],
+        use: [require.resolve('ts-loader'), 'aphid-loader'],
         exclude: /node_modules/,
       },
       {
         test: /\.jsx?$/,
-        use: [require.resolve('babel-loader')],
+        // use: [require.resolve('babel-loader'), 'aphid-loader'],
+        loader: 'aphid-loader',
         exclude: /node_modules/,
       },
     ],

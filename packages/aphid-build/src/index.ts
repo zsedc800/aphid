@@ -15,7 +15,7 @@ export default {
         heartbeat: 5000,
         publicPath: '/',
         log: false,
-        logLevel: 'error',
+        logLevel: 'info',
       }),
     );
   },
