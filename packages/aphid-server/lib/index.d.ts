@@ -11,5 +11,6 @@ declare class Server {
     dev?: boolean;
     constructor({ dir, dev, port }?: ServerConfiguration);
     prepare(): Promise<void>;
+    handleRequest(): (ctx: Koa.Context, next: Function) => any;
 }
 export { Server };

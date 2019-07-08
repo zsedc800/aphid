@@ -19,8 +19,18 @@ const baseConfig: Configuration = {
       },
       {
         test: /\.jsx?$/,
-        // use: [require.resolve('babel-loader'), 'aphid-loader'],
-        loader: 'aphid-loader',
+        use: [
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              presets: [
+                require.resolve('@babel/preset-env'),
+                require.resolve('@babel/preset-react'),
+              ],
+            },
+          },
+          'aphid-loader',
+        ],
         exclude: /node_modules/,
       },
     ],
@@ -40,15 +50,15 @@ export default ({ context, entry }: Iopt) => {
     context,
     entry: {
       app: [
-        // require.resolve('webpack-hot-middleware/client') +
-        //   '?name=aphid&path=/__aphid_hmr&timeout=2000',
+        require.resolve('webpack-hot-middleware/client') +
+          '?name=aphid&path=/__aphid_hmr&timeout=2000',
         join(context, entry),
       ],
     },
     output: {
       path: join(context, './dist'),
       publicPath: '/',
-      filename: '[name].[hash:8].js',
+      filename: '[name].js',
     },
   });
   return config;

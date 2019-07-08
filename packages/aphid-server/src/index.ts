@@ -1,6 +1,11 @@
 import Koa from 'koa';
 import { resolve } from 'path';
 import compiler from 'aphid-build';
+import middlewareGlue, {
+  FetchMiddleware,
+  RenderMiddleware,
+  RouteMiddleware,
+} from './middlewares';
 export type ServerConfiguration = {
   dir?: string;
   dev?: boolean;
@@ -18,8 +23,18 @@ class Server {
     this.port = port;
     this.dev = dev;
     if (port) {
+      this.app.use((ctx, next) => {
+        console.log(ctx.path, 'before middlewares');
+        return next();
+      });
       this.prepare().then(() => {
-        this.app.listen(port, () => {
+        const { app } = this;
+        app.use(this.handleRequest());
+        app.use((ctx) => {
+          console.log(ctx.path, 'after');
+          ctx.body = '404 Not Found';
+        });
+        app.listen(port, () => {
           console.log(`server start at ${port}`);
         });
       });
@@ -30,6 +45,9 @@ class Server {
     if (this.dev) {
       compiler.dev(this.app, context);
     }
+  }
+  public handleRequest() {
+    return middlewareGlue([RouteMiddleware, FetchMiddleware, RenderMiddleware]);
   }
 }
 

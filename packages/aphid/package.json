@@ -22,5 +22,11 @@
   },
   "bugs": {
     "url": "https://github.com/zsedc800/aphid/issues"
+  },
+  "dependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.23"
   }
 }
