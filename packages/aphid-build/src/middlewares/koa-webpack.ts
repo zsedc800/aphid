@@ -43,10 +43,12 @@ export default (
           ctx.req,
           {
             writeHead: (status: number, header: KeyValueObject) => {
+              console.log('xxx hot');
               ctx.status = status;
               ctx.set(header);
             },
             write: stream.write.bind(stream),
+            end: stream.end.bind(stream),
           },
           next,
         ),

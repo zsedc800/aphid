@@ -17,6 +17,7 @@ export default (compiler: Compiler, options: any) => {
           ctx.set(headers);
         },
         write: stream.write.bind(stream),
+        end: stream.end.bind(stream),
       },
       next,
     );

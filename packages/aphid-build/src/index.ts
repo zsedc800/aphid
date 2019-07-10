@@ -17,7 +17,7 @@ export default {
     const compiler: Compiler = webpack(webpackConfig);
     app.use(
       koaWebpack(compiler, {
-        path: '__aphid_hmr',
+        path: '/__aphid_hmr',
         heartbeat: 5000,
         publicPath: '/',
         log: false,

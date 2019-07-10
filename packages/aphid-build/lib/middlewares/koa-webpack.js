@@ -21,10 +21,12 @@ exports.default = (compiler, { path = '__aphid_hmr', heartbeat = 5000, publicPat
             },
         }, () => hotMid(ctx.req, {
             writeHead: (status, header) => {
+                console.log('xxx hot');
                 ctx.status = status;
                 ctx.set(header);
             },
             write: stream.write.bind(stream),
+            end: stream.end.bind(stream),
         }, next));
     };
 };
